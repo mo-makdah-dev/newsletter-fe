@@ -24,6 +24,11 @@ const CampaignsPage = () => {
   const avgOpenRate =
     totalOpens > 0 ? Math.round((totalOpens / totalSent) * 100) : 0;
 
+  // sort campaigns by createdAt from newest to oldest
+  const sortedCampaigns = [...campaigns].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+
   return (
     <div className="flex flex-col h-full w-full p-6 bg-gray-50">
       {/* Analytics Dashboard */}
@@ -71,7 +76,7 @@ const CampaignsPage = () => {
         </p>
 
         <div className="space-y-4 overflow-y-auto flex-1 ">
-          {campaigns.length === 0 ? (
+          {sortedCampaigns.length === 0 ? (
             <div className="bg-white rounded-lg p-8 text-center shadow-sm border">
               <Mail className="h-12 w-12 text-gray-400 mx-auto mb-4" />
               <p className="text-gray-600">
@@ -79,7 +84,7 @@ const CampaignsPage = () => {
               </p>
             </div>
           ) : (
-            campaigns.map((campaign) => (
+            sortedCampaigns.map((campaign) => (
               <CampaignCard
                 key={campaign.id}
                 campaign={campaign}
