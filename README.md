@@ -112,6 +112,28 @@ src/
 - `yarn preview` - Preview production build
 - `yarn lint` - Code linting
 
+## 🤖 AI Development Tools
+
+This project was developed using a combination of AI-powered tools, each serving specific roles in the development process:
+
+### **Lovable.dev**
+
+Used as my main designer - gave me the initial design inspiration and UI/UX examples to work with. Basically set the visual direction for the whole project.
+
+### **GitHub Copilot**
+
+Helped with utility functions and auto-completion to speed up development. Made coding much faster with its suggestions.
+
+### **GPT (ChatGPT)**
+
+Used for color selection, theme ideas, and generating sample data. Also helped with technical questions and design decisions when I got stuck.
+
+### **Cursor**
+
+Handled folder organization and code refactoring. Also helped with initial HTML/CSS structures through the development process.
+
+This targeted approach maximized the strengths of each AI tool while maintaining development efficiency and code quality.
+
 ---
 
 Built with modern React and TypeScript for scalable newsletter management.
