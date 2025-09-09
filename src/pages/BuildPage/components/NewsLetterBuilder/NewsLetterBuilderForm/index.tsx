@@ -109,88 +109,60 @@ export const NewsLetterBuilderForm = ({
 
       <div className="flex flex-col gap-2">
         <label className="text-sm font-semibold">Select Groups</label>
-        {availableGroups.length > 0 ? (
-          <Select
-            isMulti
-            options={availableGroups.map((group) => ({
-              value: group,
-              label: `${group.name} (${group.users.length} users)`,
-            }))}
-            value={selectedGroups.map((group) => ({
-              value: group,
-              label: `${group.name} (${group.users.length} users)`,
-            }))}
-            onChange={(selectedOptions) => {
-              const groups = selectedOptions
-                ? selectedOptions.map((option) => option.value)
-                : [];
-              setSelectedGroups(groups);
-            }}
-            placeholder="Select groups to send newsletter to..."
-            className="react-select-container"
-            classNamePrefix="react-select"
-            isDisabled={isSending}
-            styles={{
-              control: (base) => ({
-                ...base,
-                border: "1px solid #e2e8f0",
-                borderRadius: "12px",
-                minHeight: "48px",
-                backgroundColor: "#f8fafc",
-                "&:hover": {
-                  border: "1px solid #cbd5e1",
-                },
-              }),
-              placeholder: (base) => ({
-                ...base,
-                color: "#64748b",
-              }),
-              multiValue: (base) => ({
-                ...base,
-                backgroundColor: "#e2e8f0",
-                borderRadius: "8px",
-              }),
-              multiValueLabel: (base) => ({
-                ...base,
+        <Select
+          isMulti
+          options={availableGroups.map((group) => ({
+            value: group,
+            label: `${group.name} (${group.users.length} users)`,
+          }))}
+          value={selectedGroups.map((group) => ({
+            value: group,
+            label: `${group.name} (${group.users.length} users)`,
+          }))}
+          onChange={(selectedOptions) => {
+            const groups = selectedOptions
+              ? selectedOptions.map((option) => option.value)
+              : [];
+            setSelectedGroups(groups);
+          }}
+          placeholder="Select groups to send newsletter to..."
+          className="react-select-container"
+          classNamePrefix="react-select"
+          isDisabled={isSending}
+          styles={{
+            control: (base) => ({
+              ...base,
+              border: "1px solid #e2e8f0",
+              borderRadius: "12px",
+              minHeight: "48px",
+              backgroundColor: "#f8fafc",
+              "&:hover": {
+                border: "1px solid #cbd5e1",
+              },
+            }),
+            placeholder: (base) => ({
+              ...base,
+              color: "#64748b",
+            }),
+            multiValue: (base) => ({
+              ...base,
+              backgroundColor: "#e2e8f0",
+              borderRadius: "8px",
+            }),
+            multiValueLabel: (base) => ({
+              ...base,
+              color: "#334155",
+            }),
+            multiValueRemove: (base) => ({
+              ...base,
+              color: "#64748b",
+              "&:hover": {
+                backgroundColor: "#cbd5e1",
                 color: "#334155",
-              }),
-              multiValueRemove: (base) => ({
-                ...base,
-                color: "#64748b",
-                "&:hover": {
-                  backgroundColor: "#cbd5e1",
-                  color: "#334155",
-                },
-              }),
-            }}
-          />
-        ) : (
-          <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-6 text-center">
-            <p className="text-slate-600 mb-3">
-              No groups available. Create a group to send newsletters to your
-              recipients.
-            </p>
-            <Link
-              to="/recipients"
-              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 4v16m8-8H4"
-                />
-              </svg>
-              Create Group
-            </Link>
-          </div>
-        )}
+              },
+            }),
+          }}
+        />
       </div>
 
       <div className="flex items-center gap-3">

@@ -23,6 +23,7 @@ export interface UserLink {
   userId: string;
   userEmail: string;
   opened: boolean;
+  ctaClicked: boolean;
 }
 
 // Campaign types
@@ -80,6 +81,7 @@ export interface CampaignsActions {
     groups: Group[]
   ) => void;
   updateLinkOpened: (linkId: string) => void;
+  updateLinkCtaClicked: (linkId: string) => void;
 }
 
 // Combined store types

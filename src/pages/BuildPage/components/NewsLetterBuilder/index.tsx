@@ -6,6 +6,7 @@ import { NewsLetterBuilderForm } from "./NewsLetterBuilderForm";
 import { useGroupsStore } from "@/zustand";
 import { SendIcon, ArrowLeft } from "lucide-react";
 import { ClipLoader } from "react-spinners";
+import { Link } from "react-router-dom";
 
 type Props = {
   selectedTheme: ThemeConfigs;
@@ -67,28 +68,56 @@ export const NewsLetterBuilder = ({
           ) : (
             <>
               <span style={{ color: textColor }}>Send</span>
-              <SendIcon />
+              <SendIcon className="w-4 h-4" style={{ color: textColor }} />
             </>
           )}
         </button>
       </header>
       <div className="w-full h-fit flex gap-4">
         <div className="w-1/2 h-180 bg-white border border-slate-200 rounded-2xl p-4">
-          <NewsLetterBuilderForm
-            title={title}
-            content={content}
-            actionLabel={actionLabel}
-            actionUrl={actionUrl}
-            selectedTheme={selectedTheme}
-            setForm={setForm}
-            setColorIndex={setColorIndex}
-            selectedColorIndex={selectedColorIndex}
-            resetForm={resetForm}
-            isSending={isSending}
-            selectedGroups={selectedGroups}
-            setSelectedGroups={setGroups}
-            availableGroups={groups}
-          />
+          {groups.length ? (
+            <NewsLetterBuilderForm
+              title={title}
+              content={content}
+              actionLabel={actionLabel}
+              actionUrl={actionUrl}
+              selectedTheme={selectedTheme}
+              setForm={setForm}
+              setColorIndex={setColorIndex}
+              selectedColorIndex={selectedColorIndex}
+              resetForm={resetForm}
+              isSending={isSending}
+              selectedGroups={selectedGroups}
+              setSelectedGroups={setGroups}
+              availableGroups={groups}
+            />
+          ) : (
+            <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-6 text-center">
+              <p className="text-slate-600 mb-3">
+                No groups available. Create a group to send newsletters to your
+                recipients.
+              </p>
+              <Link
+                to="/recipients"
+                className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+                Create Group
+              </Link>
+            </div>
+          )}
         </div>
         <div className="w-1/2 h-180 bg-white border border-slate-200 rounded-2xl p-4">
           <p className="text-lg font-semibold mb-4">Live Preview</p>

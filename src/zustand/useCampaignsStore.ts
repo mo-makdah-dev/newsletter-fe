@@ -34,6 +34,7 @@ export const useCampaignsStore = create<CampaignsStore>()(
             userId: user.id,
             userEmail: user.email,
             opened: false,
+            ctaClicked: false,
           }))
         );
 
@@ -57,6 +58,17 @@ export const useCampaignsStore = create<CampaignsStore>()(
             ...campaign,
             links: campaign.links.map((link) =>
               link.id === linkId ? { ...link, opened: true } : link
+            ),
+          })),
+        }));
+      },
+
+      updateLinkCtaClicked: (linkId: string) => {
+        set((state) => ({
+          campaigns: state.campaigns.map((campaign) => ({
+            ...campaign,
+            links: campaign.links.map((link) =>
+              link.id === linkId ? { ...link, ctaClicked: true } : link
             ),
           })),
         }));

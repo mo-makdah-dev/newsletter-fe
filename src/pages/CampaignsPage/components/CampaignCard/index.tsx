@@ -48,14 +48,14 @@ export const CampaignCard = ({ campaign, groups }: Props) => {
   const getCampaignIcon = (campaign: Campaign) => {
     const type = getCampaignType(campaign);
     if (type.toLowerCase().includes("urgent"))
-      return <AlertTriangle className="h-6 w-6 text-white" />;
+      return <AlertTriangle className="h-6 w-6" style={{ color: typeColor }} />;
     if (type.toLowerCase().includes("celebration"))
-      return <PartyPopper className="h-6 w-6 text-white" />;
+      return <PartyPopper className="h-6 w-6" style={{ color: typeColor }} />;
     if (type.toLowerCase().includes("informative"))
-      return <Mail className="h-6 w-6 text-white" />;
+      return <Mail className="h-6 w-6" style={{ color: typeColor }} />;
     if (type.toLowerCase().includes("other"))
-      return <GaugeIcon className="h-6 w-6 text-white" />;
-    return <Mail className="h-6 w-6 text-white" />;
+      return <GaugeIcon className="h-6 w-6" style={{ color: typeColor }} />;
+    return <Mail className="h-6 w-6" style={{ color: typeColor }} />;
   };
 
   const opens = campaign.links.filter((link) => link.opened).length;

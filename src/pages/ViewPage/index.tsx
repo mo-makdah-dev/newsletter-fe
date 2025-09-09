@@ -6,7 +6,8 @@ import { LetterTemplate } from "@/components/common/LetterTemplate";
 const ViewPage = () => {
   const { id } = useParams();
   console.log(id);
-  const { campaigns, updateLinkOpened } = useCampaignsStore();
+  const { campaigns, updateLinkOpened, updateLinkCtaClicked } =
+    useCampaignsStore();
 
   // Find the campaign and link by the provided ID
   const { campaign, link } = useMemo(() => {
@@ -62,6 +63,7 @@ const ViewPage = () => {
         actionUrl={campaign.email.actionUrl}
         actionLabel={campaign.email.actionLabel}
         textColor={campaign.theme.textColor}
+        onCtaClicked={() => updateLinkCtaClicked(link.id)}
       />
     </div>
   );
